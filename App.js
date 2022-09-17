@@ -1,12 +1,17 @@
 
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import { StyleSheet, Text, View,Image ,FlatList} from 'react-native';
 import FeedPost from "./src/components/FeedPost";
+import posts from './assets/data/posts.json';
 export default function App() {
   return (
     <View style={styles.container}>
-      <FeedPost />
-      <FeedPost />
+      {/* <FeedPost post={posts[0]}/>
+      <FeedPost post={posts[1]} /> */}
+      <FlatList
+        data={posts}
+        renderItem={({ item }) => <FeedPost post={item} />}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -18,78 +23,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  post: {
-    backgroundColor: "#fff",
-    marginVertical: 5,
-  },
-  header: {
-    padding: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-  },
-  profileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 25,
-    marginRight: 10,
-  },
-  name: {
-    fontWeight: "500",
-  },
-  subtitle: {
-    color: "gray",
-  },
-  icon: {
-    marginLeft: "auto",
-  },
-  // Body
-  description: {
-    lineHeight: 20,
-    padding: 10,
-  },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
-  },
-  // Footer
-  footer: {
-    paddingHorizontal: 10,
-  },
-
-  // Stats Row
-  statsRow: {
-    flexDirection: "row",
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingVertical: 10,
-    borderColor: "lightgray",
-  },
-  likeIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
-  },
-  likedBy: {
-    color: "gray",
-  },
-  shares: {
-    color: "gray",
-    marginLeft: "auto",
-  },
-  // button rows
-  buttonRow:{
-    marginVertical:10,
-    flexDirection:'row',
-    justifyContent:'space-around'
-  },
-  iconButton:{
-    flexDirection:'row',
-    alignItems:'center'
-  },
-  iconButtonText:{
-    color:'gray',
-    marginLeft:5,
-    fontWeight:"500"
   }
 });
