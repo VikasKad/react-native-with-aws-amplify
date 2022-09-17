@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import { Entypo } from "@expo/vector-icons";
+import LikeImage from "./assets/images/like.png";
 const post = {
   id: "p1",
   createdAt: "19 m",
@@ -36,6 +37,14 @@ export default function App() {
           style={styles.icon}
   />
       </View>
+      <Text style={styles.description}>{post.description}</Text>
+        {post.image && (
+        <Image
+          source={{ uri: post.image }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+        )}
       <View style={styles.footer}></View>
   </View>
   <StatusBar style="auto" />
@@ -74,5 +83,14 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: "auto",
+  },
+  // Body
+  description: {
+    lineHeight: 20,
+    padding: 10,
+  },
+  image: {
+    width: "100%",
+    aspectRatio: 1,
   },
 });
