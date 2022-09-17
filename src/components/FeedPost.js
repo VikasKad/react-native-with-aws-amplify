@@ -5,7 +5,11 @@ import { Entypo,
   FontAwesome5,
   MaterialCommunityIcons,} from "@expo/vector-icons";
 import LikeImage from "../../assets/images/like.png";
+import { useState } from "react";
+import { Pressable } from "react-native";
+
 const Feedpost=({post})=> {
+    const [isLiked, setIsLiked] = useState(false);
   return (
     <View style={styles.post}>
       <View style={styles.header}>
@@ -47,8 +51,22 @@ const Feedpost=({post})=> {
       <View style={styles.buttonRow}>
         {/* Like Button */}
           <View style={styles.iconButton}>
-            <AntDesign name="like2" size={18} color="gray" />
-            <Text style={styles.iconButtonText}>Like</Text>
+          <Pressable
+            onPress={() => setIsLiked(!isLiked)} //<- onPress event toggles isLiked
+            style={styles.iconButton}
+            >
+                <AntDesign 
+                    name="like2" 
+                    size={18} 
+                    color={isLiked ? "royalblue" : "gray"}
+                />
+                <Text style={[
+                    styles.iconButtonText,
+                    { color: isLiked ? "royalblue" : "gray" },
+                ]}>
+                    Like
+                </Text>
+            </Pressable>
           </View>
           {/* Comment button */}
           <View style={styles.iconButton}>
