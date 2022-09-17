@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Image } from 'react-native';
-import { Entypo } from "@expo/vector-icons";
+import { Entypo,
+  AntDesign,
+  FontAwesome5,
+  MaterialCommunityIcons,} from "@expo/vector-icons";
 import LikeImage from "./assets/images/like.png";
 const post = {
   id: "p1",
@@ -45,7 +48,26 @@ export default function App() {
           resizeMode="cover"
         />
         )}
-      <View style={styles.footer}></View>
+            {/* Post footer with likes and button */}
+      <View style={styles.footer}>
+        {/* Stats row */}
+        <View style={styles.statsRow}>
+          <Image source={LikeImage} style={styles.likeIcon} />
+          <Text style={styles.likedBy}>
+            Elon Musk and {post.numberOfLikes} others
+          </Text>
+          <Text style={styles.shares}>{post.numberOfShares} shares</Text>
+        </View>
+      </View>
+      {/* Button container */}
+      <View style={styles.buttonRow}>
+        {/* Like Button */}
+          <View style={styles.iconButton}>
+            <AntDesign name="like2" size={18} color="gray" />
+            <Text style={styles.iconButtonText}>Like</Text>
+          </View>
+
+      </View>
   </View>
   <StatusBar style="auto" />
     </View>
@@ -93,4 +115,43 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 1,
   },
+  // Footer
+  footer: {
+    paddingHorizontal: 10,
+  },
+
+  // Stats Row
+  statsRow: {
+    flexDirection: "row",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingVertical: 10,
+    borderColor: "lightgray",
+  },
+  likeIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 5,
+  },
+  likedBy: {
+    color: "gray",
+  },
+  shares: {
+    color: "gray",
+    marginLeft: "auto",
+  },
+  // button rows
+  buttonRow:{
+    marginVertical:10,
+    flexDirection:'row',
+    justifyContent:'space-around'
+  },
+  iconButton:{
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  iconButtonText:{
+    color:'gray',
+    marginLeft:5,
+    fontWeight:"500"
+  }
 });
