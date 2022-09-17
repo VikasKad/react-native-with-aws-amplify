@@ -1,16 +1,20 @@
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,View} from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import CreatePostScreen from './src/screens/CreatePost';
 import FeedScreen from './src/screens/FeedScreen';
-
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-     <FeedScreen />
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <CreatePostScreen />
+        {/* <FeedScreen /> */}
+        <StatusBar style="auto" />
+      </View>
+    </SafeAreaProvider>
   );
 }
 
